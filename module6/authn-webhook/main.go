@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
+        "fmt"
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 	authentication "k8s.io/api/authentication/v1beta1"
@@ -13,6 +13,7 @@ import (
 
 func main() {
 	http.HandleFunc("/authenticate", func(w http.ResponseWriter, r *http.Request) {
+                fmt.Println("requesting")
 		decoder := json.NewDecoder(r.Body)
 		var tr authentication.TokenReview
 		err := decoder.Decode(&tr)
